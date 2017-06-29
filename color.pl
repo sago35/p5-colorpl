@@ -33,7 +33,7 @@ if (grep /^(-h|--help)$/, @ARGV) {
 
 
 my @input;
-while (my $arg = shift @ARGV) {
+while (defined(my $arg = shift @ARGV)) {
     if ($arg eq "-i") {
         $charcode->{in} = shift @ARGV;
     } elsif ($arg eq "-o") {
@@ -43,7 +43,7 @@ while (my $arg = shift @ARGV) {
     }
 }
 
-while (my $arg = shift @input) {
+while (defined(my $arg = shift @input)) {
     my $color = shift @input;
     if (not defined $color) {
         &help;
